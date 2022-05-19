@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      *{box-sizing: border-box;margin: 0;padding: 0;}
+      html, body{
+        width: 100%;
+        height: 100%;}
+      button{
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding:10px;
+        box-shadow: 0 5px 0 #000;
+      }
+      .invitation {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        perspective: 1000px;
+        background: url('https://d1icd6shlvmxi6.cloudfront.net/gsc/DNUM85/f7/fb/b9/f7fbb93cb6a2429caff05035793e533c/images/demo/bg.jpg?token=469b7d7ccd8cb41260762f746b435185dacd2d62e0d174162421920759801f71') no-repeat center;
+      }
+      .pannel{
+        width: 100%;
+        height: 100%;
+        font: 30px bold;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:1.5s;
+        transform-style: preserve-3d;
+        background-color: yellow;
+      }
+      .first-area{
+        position: absolute;
+        transform: translateX(0) rotateY(0);
+        transform-origin: left;
+        z-index: 10;
+        background-color: purple;
+      }
+      .second-area{
+        position: absolute;
+        transform-origin: right;
+        transform: translateX(0);
+        z-index: 9;
+        background-color: plum;
+      }
+      .content{
+        backface-visibility: hidden;
+        text-shadow: 2px 2px 2px #000;
+      }
+      .front{
+        transform: rotateY(0) translateZ(60px);
+      }
+      .back{
+        transform: rotateY(-180deg) translateZ(60px);
+      }
+      .sec .first-area{
+        transform: translateX(100%) rotateY(-180deg);
+      }
+      .sec .second-area,
+      .sec .third-area{
+        transform: translateX(100%);
+      }
+      .thi .first-area,
+      .fou .first-area,
+      .fiv .first-area{
+        transform: translateX(0) rotateY(-180deg);
+      }
+      .thi .second-area,      
+      .fiv .third-area{
+        transform: translateX(0);
+      }
+      .fou .second-area{
+        transform: translateX(-100%) rotateY(180deg);
+      }
+      .fou .third-area{
+        transform: translateX(-100%);
+      }
+      .fiv .second-area{
+        transform: translateX(0) rotateY(180deg);
+      }
+    </style>
+</head>
+
+<body>
+    <!-- <form id="commentsForm" name="commentsForm">
+      <input type="text" name="name" id="" placeholder="이름">
+      <input type="password" name="pass" id="" placeholder="비밀번호">
+      <textarea name="contents" id="" cols="30" rows="10"></textarea>
+      <button type="submit" id="formBtn">등록하기</button>
+    </form> -->
+    <div class="invitation fir">
+      <div class="pannel first-area">
+        <div class="content front">
+          <p>1</p>
+          <button type="button" data-go="sec">go to 2</button>
+        </div>
+        <div class="content back">
+          <p>2</p>
+          <button type="button" data-go="fir">go to 2</button>
+          <button type="button" data-go="thi">go to 3</button>
+        </div>
+      </div>
+      <div class="pannel second-area">
+        <div class="content front">
+          <p>3</p>
+          <button type="button" data-go="sec">go to 2</button>
+          <button type="button" data-go="fou">go to 4</button>
+        </div>
+        <div class="content back">
+          <p>4</p>
+          <button type="button" data-go="thi">go to 3</button>
+          <button type="button" data-go="fiv">go to 5</button>
+        </div>
+      </div>
+      <div class="pannel third-area">
+        <div class="content front">
+          <p>5</p>
+          <button type="button" data-go="fou">go to 4</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const invitation = document.querySelector('.invitation')
+    
+      invitation.addEventListener('click', function(e){
+        let el = e.target;
+        if (el.tagName === 'BUTTON') {
+          let classis = el.dataset.go
+          this.classList.replace(this.classList[1], classis);
+        }
+      })
+    </script>
+</body>
+
+</html>

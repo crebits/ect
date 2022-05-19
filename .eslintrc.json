@@ -1,0 +1,109 @@
+{
+    "root": true,
+    "env": {
+        "browser": true, // console.log를 에러 없이 사용
+        "es2021": true,
+        "node": true, // 'module' is not defined. 에러가 발생하면 기입
+        "commonjs": true // module.exports 구문, require 구문 지원
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:prettier/recommended",
+        "plugin:import/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 13,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "react-hooks",
+        "import",
+        "simple-import-sort",
+        "prettier",
+        "jsx-a11y"
+    ],
+    "rules": {
+        "react-hooks/rules-of-hooks": "error", //리액트 훅의 순서를 지키게끔 한다.
+        "react-hooks/exhaustive-deps": "warn", //위와 같이 사용하는게 좋음
+        "prettier/prettier": "error",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "import/no-anonymous-default-export": 0,
+        "no-multiple-empty-lines": ["error", { "max": 1 }], // 최대 줄바꿈 수는 1, 마지막 줄바꿈 없이
+        "eol-last": ["error", "always"], // end of lines, 파일의 맨 마지막에 줄바꿈을 넣을것이냐?
+        "comma-dangle": ["error", "always-multiline"], // 후행 쉼표. always : 항상 쉼표가 필요 / always-multiline : 2줄 이상일때, 마지막에 쉼표 필요. 한줄일때는 후행쉼표 x (좋다)
+        "object-curly-spacing": ["error", "always"], // object 괄호 앞 뒤로 공백 추가 여부 always or never
+        "object-curly-newline": "off", // { 다음 줄 바꿈을 강제로 사용하지 않는다.
+        "space-in-parens": ["error", "never"], // 괄호 앞뒤로 공백 추가 always or never
+        "computed-property-spacing": ["error", "never"], //[ key ] 로 적을지, [key]로 적을지 always or never
+        "comma-spacing": ["error", { "before": false, "after": true }], // comma 앞뒤로 공백
+        "quotes": ["error", "single"],
+        "no-tabs": ["error", { "allowIndentationTabs": true }], // \t 사용을 금지한다
+        "semi": ["error", "always"],
+        "object-shorthand": "error", // es6에서 나온 객체를 간편하게 쓰는 문법으로 강제한다.
+        "padding-line-between-statements": [
+          "error",
+          { "blankLine": "always", "prev": "*", "next": "return" },
+          { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+          { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] }
+        ],
+        // prev : 이전에 무엇이 왔을때 blankline을 넣을것인가? // const,let,var, case
+        // next : 다음에 무엇이 왔을때 blankline을 넣을 것인가?  // return 
+        "@typescript-eslint/quotes": ["error", "double"], //더블 쿼터 사용
+        "no-unused-vars": "off", //사용안한 변수 경고 중복
+        "@typescript-eslint/no-unused-vars": "warn", //사용안한 변수는 경고
+        "jsx-a11y/control-has-associated-label": "off", // 상호작용하는 엘리먼트에 label을 넣는다
+        "react/no-array-index-key": "off", // key값으로 index를 사용할수 있다.
+        "arrow-body-style": "off", //화살표 함수 안에 return을 사용 할 수 있다.
+        "react/no-unescaped-entities": "off", //문자열 내에서 " ' > } 허용
+        "react/prop-types": "off", //proptypes를 사용하지 않는다.
+        "react/jsx-one-expression-per-line": "off", //한라인에 여러개의 JSX를 사용 할 수 있다.
+        "implicit-arrow-linebreak": "off", // 화살표 함수 다음에 줄 바꿈을 사용할 수 있다.
+        "no-shadow": "off", //파일 내에서 중복 이름을 사용 할 수 있다.
+        "spaced-comment": "off", //주석을 뒤에 달 수 있다.
+        "operator-linebreak": "off", //연산자 다음 줄 바꿈을 사용 할 수 있다.
+        "react/react-in-jsx-scope": "off", // jsx를 사용하여도 React를 꼭 import 하지 않아도 된다.
+        "react/jsx-props-no-spreading": "off", //props를 스프래드 할 수 있다.
+        "jsx-a11y/anchor-is-valid": "off", // next js에서는 a에 href없이 사용
+        "global-require": "off", //함수 내에서 require 사용가능
+        "jsx-a11y/label-has-associated-control": "off", //label htmlFor을 사용하지 않아도 된다.
+        "import/prefer-default-export": "off", //export default 를 사용하라.
+        "no-param-reassign": "off",
+        "react/jsx-curly-newline": "off", // jsx안에 }를 새로운 라인에 사용할 수 있다.
+        "no-use-before-define": "off", // 선언하기 전에 사용할수 없다. 중복
+        "@typescript-eslint/no-use-before-define": ["warn"], // 선언하기 전에 사용 한다면 경고
+        "no-case-declarations": "off", // case문 안에서 변수 선언 사용하기
+        "react/jsx-filename-extension": [
+          1,
+          { "extensions": [".js", ".jsx", ".tsx"] } //jsx사용가능한 확장자 설정
+        ],
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never"
+          }, //import 시 확장자명은 사용하지 않는다.
+        ]
+    },
+    "settings": {
+      "import/resolver": { //절대경로를 사용하는 경우에, typescript에서 인식하지 못 할 때
+        "typescript": {}
+      },
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+      }
+    },
+    "ignorePatterns": ["node_modules/", ".next/*"], //적용안할 파일이나 폴더 명시
+}

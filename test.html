@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<title>NS</title>
+		
+		<style type="text/css">
+			*{margin:0; padding:0;}
+			html	{height: 100%;}
+			body	{height: auto; overflow-x: hidden;/*  letter-spacing: -1px;  */font-family: AppleSDGothicNeo, 'Droid Sans', dotum, '����', sans-serif; font-size:15px; line-height:1.25; color: #555; webkit-text-size-adjust: none;}
+			ul,ol,dl {list-style:none;}
+			
+    </style>
+	</head>
+	<body>
+    <div id="root">
+    </div>
+    <button type="button" id="btn">등록하기</button>
+
+    <script>
+      const root = document.getElementById("root");
+      const btn = document.getElementById("btn");
+      const head = document.head || document.getElementsByTagName('head')[0];
+      btn.addEventListener("click", (e) => {
+        addLink();
+        const div = document.createElement('div')
+        div.className = 'red';
+        root.appendChild(div)
+      })
+      
+      function addLink(){
+        const link = document.createElement('link');
+        link.rel="stylesheet";
+        link.type="text/css";
+        link.href="./data.css";
+        head.appendChild(link)
+      }
+
+      function addStyle() {
+        const sheet = document.createElement('style');
+        const sheet_str = '.red{background-color: red;width: 100px;height: 100px;}';
+        sheet.type="text/css";
+        sheet.appendChild(document.createTextNode(sheet_str))
+        head.appendChild(sheet)
+      }
+    </script>
+	</body>
+</html>
